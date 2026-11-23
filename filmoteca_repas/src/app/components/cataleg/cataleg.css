@@ -1,0 +1,6 @@
+.resum { font-weight: bold; padding: 1rem; background: #eee; }
+.fitxes { display: flex; flex-wrap: wrap; gap: 1rem; }
+.fitxa { border: 1px solid #ccc; padding: 1rem; width: 220px; border-radius: 8px; }
+.estat { font-weight: bold; }
+.disponible { color: green; }
+.llogada { color: crimson; }

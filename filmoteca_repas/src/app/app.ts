@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Pelicula } from './interfaces/pelicula';
+import { Cataleg } from './components/cataleg/cataleg';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Cataleg],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -15,6 +16,7 @@ export class App {
     {
       id: 1,
       titol: 'El Padrino',
+      director: 'Francis Ford Coppola',
       any: 1972,
       durada: 175,
       genere: 'Crimen',
@@ -26,9 +28,10 @@ export class App {
     {
       id: 2,
       titol: 'El Padrino II',
+      director: 'Francis Ford Coppola',
       any: 1974,
       durada: 202,
-      genere: 'Crimen',
+      genere: 'Terror',
       valoracio: 9.0,
       disponible: false,
       cartellUrl: 'https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg'
@@ -37,9 +40,10 @@ export class App {
     {
       id: 3,
       titol: 'El Padrino III',
+      director: 'Francis Ford Coppola',
       any: 1990,
       durada: 162,
-      genere: 'Crimen',
+      genere: 'Comedia',
       valoracio: 7.6,
       disponible: true,
       cartellUrl: ''
@@ -47,7 +51,7 @@ export class App {
     }
     ]
 
-    
+
 
 
 

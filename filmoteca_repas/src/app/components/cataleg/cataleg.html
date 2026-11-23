@@ -1,0 +1,24 @@
+<p class="resum">
+  Total: {{ total }} pel·lícules |
+  Disponibles: {{ totalDisponibles }} |
+  Durada total: {{ DuradaTotal }} |
+  Valoració mitjana: {{ valoracioMitjana }}
+</p>
+
+<div class="fitxes">
+  @for (p of pelicules; track p.id; let i = $index) {
+    <article class="fitxa">
+      <h3>{{ i + 1 }}. {{ p.titol }}</h3>
+      <p>Director: {{ p.director }}</p>
+      <p>Any: {{ p.any }}</p>
+      <p>Durada: {{ p.durada }} min</p>
+      <p>Valoració: {{ p.valoracio }}</p>
+
+      @if (p.disponible) {
+        <span class="estat disponible">Disponible</span>
+      } @else {
+        <span class="estat llogada">Llogada</span>
+      }
+    </article>
+  }
+</div>
