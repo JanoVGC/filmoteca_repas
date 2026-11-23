@@ -11,6 +11,7 @@ import { PELICULES } from '../../pelicules';
 export class Cataleg {
 
   pelicules: Pelicula[] = PELICULES;
+  cerca = '';
 
   get total(): number {
     return this.pelicules.length;
@@ -45,6 +46,27 @@ export class Cataleg {
 
 
   }
+
+  // Part 3 
+
+  get peliculesFiltrades(): Pelicula[] {
+    const text = this.cerca.toLowerCase().trim();
+    return this.pelicules.filter(p => p.titol.toLowerCase().includes(text));
+  }
+
+  onCerca(valor: string): void {
+    this.cerca = valor;
+  }
+
+  llogar(p: Pelicula): void {
+    p.disponible = false; 
+  }
+
+  retornar(p:Pelicula): void {
+    p.disponible = true; 
+  }
+
+
 
 
 

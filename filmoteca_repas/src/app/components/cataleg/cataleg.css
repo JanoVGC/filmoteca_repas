@@ -1,6 +1,17 @@
 .resum { font-weight: bold; padding: 1rem; background: #eee; }
+.cercador { margin: 1rem 0; padding: 0.5rem; width: 280px; }
 .fitxes { display: flex; flex-wrap: wrap; gap: 1rem; }
 .fitxa { border: 1px solid #ccc; padding: 1rem; width: 220px; border-radius: 8px; }
+.fitxa img { display: block; margin-bottom: 0.5rem; }
 .estat { font-weight: bold; }
 .disponible { color: green; }
-.llogada { color: crimson; }
+.llogada-text { color: crimson; }
+
+/* [class.destacada] → valoració >= 8.5 */
+.destacada { border: 2px solid gold; background: #fffbe6; }
+
+/* [class.llogada] → pel·lícules no disponibles */
+.llogada { opacity: 0.6; background: #f3f3f3; }
+
+.botons { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.buit { font-style: italic; }

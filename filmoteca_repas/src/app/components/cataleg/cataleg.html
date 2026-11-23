@@ -5,20 +5,54 @@
   Valoració mitjana: {{ valoracioMitjana }}
 </p>
 
+<input
+  #cercador
+  type="text"
+  class="cercador"
+  placeholder="Cerca per títol..."
+  [value]="cerca"
+  (input)="onCerca(cercador.value)"
+/>
+
 <div class="fitxes">
-  @for (p of pelicules; track p.id; let i = $index) {
-    <article class="fitxa">
+  @for (p of peliculesFiltrades; track p.id; let i = $index) {
+    <article
+      class="fitxa"
+      [class.destacada]="p.valoracio >= 8.5"
+      [class.llogada]="!p.disponible"
+    >
+      <img
+        [src]="p.cartellUrl || 'https://placehold.co/200x300?text=Sense+cartell'"
+        [alt]="'Cartell de ' + p.titol"
+        width="150"
+      />
+
       <h3>{{ i + 1 }}. {{ p.titol }}</h3>
       <p>Director: {{ p.director }}</p>
       <p>Any: {{ p.any }}</p>
       <p>Durada: {{ p.durada }} min</p>
-      <p>Valoració: {{ p.valoracio }}</p>
+      <p>
+        Valoració:
+        <span [style.color]="p.valoracio >= 8 ? 'green' : 'orange'">
+          {{ p.valoracio }}
+        </span>
+      </p>
 
       @if (p.disponible) {
         <span class="estat disponible">Disponible</span>
       } @else {
-        <span class="estat llogada">Llogada</span>
+        <span class="estat llogada-text">Llogada</span>
       }
+
+      <div class="botons">
+        <button (click)="llogar(p)" [disabled]="!p.disponible">Llogar</button>
+
+        @if (!p.disponible) {
+          <button (click)="retornar(p)">Retornar</button>
+        }
+      </div>
     </article>
+  } @empty {
+    <p class="buit">No s'ha trobat cap pel·lícula amb aquest títol.</p>
   }
 </div>
