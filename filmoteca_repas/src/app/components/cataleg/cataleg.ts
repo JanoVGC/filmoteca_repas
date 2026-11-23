@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Pelicula } from '../../interfaces/pelicula';
 import { PELICULES } from '../../pelicules';
+import { FitxaPelicula } from '../fitxa-pelicula/fitxa-pelicula';
 
 @Component({
   selector: 'app-cataleg',
-  imports: [],
+  imports: [FitxaPelicula],
   templateUrl: './cataleg.html',
   styleUrl: './cataleg.css',
 })
@@ -12,6 +13,7 @@ export class Cataleg {
 
   pelicules: Pelicula[] = PELICULES;
   cerca = '';
+  ordre = 'titol';
 
   get total(): number {
     return this.pelicules.length;
@@ -47,13 +49,38 @@ export class Cataleg {
 
   }
 
-  // Part 3 
+  // Part 3 + modificacio Part 4
 
-  get peliculesFiltrades(): Pelicula[] {
-    const text = this.cerca.toLowerCase().trim();
-    return this.pelicules.filter(p => p.titol.toLowerCase().includes(text));
+ get peliculesFiltrades(): Pelicula[] {
+  const text = this.cerca.toLowerCase().trim();
+  const llista = this.pelicules.filter(p => p.titol.toLowerCase().includes(text));
+
+  if (this.ordre === 'titol') {
+    llista.sort((a, b) => {
+      const titolA = a.titol.toLowerCase();
+      const titolB = b.titol.toLowerCase();
+
+      if (titolA < titolB) {
+        return -1;
+      } else if (titolA > titolB) {
+        return 1;
+      }
+      return 0;
+    });
+  } else if (this.ordre === 'any') {
+    llista.sort((a, b) => a.any - b.any);
+  } else if (this.ordre === 'valoracio') {
+    llista.sort((a, b) => b.valoracio - a.valoracio);
+  } else if (this.ordre === 'durada') {
+    llista.sort((a, b) => a.durada - b.durada);
   }
 
+  return llista;
+}
+
+onOrdre(valor: string): void {
+  this.ordre = valor;
+}
   onCerca(valor: string): void {
     this.cerca = valor;
   }

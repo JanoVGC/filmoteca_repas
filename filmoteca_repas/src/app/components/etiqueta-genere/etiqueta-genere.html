@@ -1,0 +1,10 @@
+<span
+  class="etiqueta"
+  [class.crimen]="genere === 'Crimen'"
+  [class.drama]="genere === 'Drama'"
+  [class.comedia]="genere === 'Comèdia' || genere === 'Comedia'"
+  [class.terror]="genere === 'Terror'"
+  [class.thriller]="genere === 'Thriller'"
+>
+  {{ genere }}
+</span>

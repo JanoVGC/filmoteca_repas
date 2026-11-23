@@ -1,0 +1,37 @@
+<article
+  class="fitxa"
+  [class.destacada]="pelicula.valoracio >= 8.5"
+  [class.llogada]="!pelicula.disponible"
+>
+  <img
+    [src]="pelicula.cartellUrl || 'https://placehold.co/200x300?text=Sense+cartell'"
+    [alt]="'Cartell de ' + pelicula.titol"
+    width="150"
+  />
+
+  <h3>{{ ordre }}. {{ pelicula.titol }}</h3>
+  <app-etiqueta-genere [genere]="pelicula.genere" />
+  <p>Director: {{ pelicula.director }}</p>
+  <p>Any: {{ pelicula.any }}</p>
+  <p>Durada: {{ pelicula.durada }} min</p>
+  <p>
+    Valoració:
+    <span [style.color]="pelicula.valoracio >= 8 ? 'green' : 'orange'">
+      {{ pelicula.valoracio }}
+    </span>
+  </p>
+
+  @if (pelicula.disponible) {
+    <span class="estat disponible">Disponible</span>
+  } @else {
+    <span class="estat llogada-text">Llogada</span>
+  }
+
+  <div class="botons">
+    <button (click)="onLlogar()" [disabled]="!pelicula.disponible">Llogar</button>
+
+    @if (!pelicula.disponible) {
+      <button (click)="onRetornar()">Retornar</button>
+    }
+  </div>
+</article>

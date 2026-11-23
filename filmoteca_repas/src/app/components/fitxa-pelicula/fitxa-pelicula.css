@@ -1,0 +1,8 @@
+.fitxa { border: 1px solid #ccc; padding: 1rem; width: 220px; border-radius: 8px; }
+.fitxa img { display: block; margin-bottom: 0.5rem; }
+.estat { font-weight: bold; }
+.disponible { color: green; }
+.llogada-text { color: crimson; }
+.destacada { border: 2px solid gold; background: #fffbe6; }
+.llogada { opacity: 0.6; background: #f3f3f3; }
+.botons { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
