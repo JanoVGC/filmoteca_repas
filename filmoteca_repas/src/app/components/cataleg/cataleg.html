@@ -1,35 +1,51 @@
+<!-- Mostra en una sola línia el resum calculat pels getters del component pare. -->
 <p class="resum">
+  <!-- Interpola el getter amb el nombre total de pel·lícules. -->
   Total: {{ total }} pel·lícules |
+  <!-- Interpola el getter amb el nombre de pel·lícules disponibles. -->
   Disponibles: {{ totalDisponibles }} |
+  <!-- Interpola el getter amb la durada total en hores i minuts. -->
   Durada total: {{ DuradaTotal }} |
+  <!-- Interpola el getter amb la valoració mitjana arrodonida. -->
   Valoració mitjana: {{ valoracioMitjana }}
 </p>
 
-<input
-  #cercador
-  type="text"
-  class="cercador"
-  placeholder="Cerca per títol..."
-  [value]="cerca"
-  (input)="onCerca(cercador.value)"
-/>
+<!--
+  Camp de cerca:
+  #cercador crea una referència local;
+  type indica un camp de text;
+  [value] mostra el valor actual;
+  (input) envia cercador.value al mètode onCerca.
+-->
+<input #cercador type="text" class="cercador" placeholder="Cerca per títol..."
+  [value]="cerca" (input)="onCerca(cercador.value)" />
 
+<!-- Referència local usada per llegir el criteri triat al desplegable. -->
 <select #ordenar (change)="onOrdre(ordenar.value)">
+  <!-- Opció per ordenar alfabèticament pel títol. -->
   <option value="titol">Ordenar per títol</option>
+  <!-- Opció per ordenar pels anys d'estrena. -->
   <option value="any">Ordenar per any</option>
+  <!-- Opció per ordenar les valoracions de major a menor. -->
   <option value="valoracio">Ordenar per valoració</option>
+  <!-- Opció per ordenar les durades en minuts. -->
   <option value="durada">Ordenar per durada</option>
 </select>
 
+<!-- Contenidor que mostra totes les fitxes resultants. -->
 <div class="fitxes">
+  <!-- Recorre pel·lículesFiltrades i crea una fitxa per cada element. -->
   @for (p of peliculesFiltrades; track p.id; let i = $index) {
-    <app-fitxa-pelicula
-      [pelicula]="p"
-      [ordre]="i + 1"
-      (llogar)="llogar($event)"
-      (retornar)="retornar($event)"
-    />
+    <!--
+      Envía la pel·lícula i el número d'ordre al component fill.
+      Els dos @Output() comuniquen les accions de llogar i retornar al pare.
+    -->
+    <!-- Component fill que visualitza la pel·lícula i el seu número d'ordre. -->
+    <app-fitxa-pelicula [pelicula]="p" [ordre]="i + 1"
+      (llogar)="llogar($event)" (retornar)="retornar($event)" />
+  <!-- Aquest bloc apareix només quan el bucle no té cap resultat. -->
   } @empty {
+    <!-- Missatge visible quan la cerca no coincideix amb cap títol. -->
     <p class="buit">No s'ha trobat cap pel·lícula amb aquest títol.</p>
   }
 </div>

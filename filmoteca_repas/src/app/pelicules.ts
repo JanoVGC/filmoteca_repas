@@ -1,5 +1,7 @@
+// Importa la interfície Pelicula per validar el tipus de l'array.
 import { Pelicula } from './interfaces/pelicula';
 
+// Exporta el catàleg utilitzat pel component Cataleg.
 export const PELICULES: Pelicula[] = [
   {
     id: 1,

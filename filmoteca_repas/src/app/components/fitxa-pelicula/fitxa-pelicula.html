@@ -1,35 +1,51 @@
-<article
-  class="fitxa"
-  [class.destacada]="pelicula.valoracio >= 8.5"
-  [class.llogada]="!pelicula.disponible"
->
+<!--
+  Article de fitxa:
+  class aplica l'estil base;
+  destacada identifica valoracions de 8.5 o més;
+  llogada identifica pel·lícules no disponibles.
+-->
+<article class="fitxa" [class.destacada]="pelicula.valoracio >= 8.5"
+  [class.llogada]="!pelicula.disponible">
+  <!-- Mostra el cartell; si no existeix, mostra una imatge genèrica per defecte. -->
   <img
     [src]="pelicula.cartellUrl || 'https://placehold.co/200x300?text=Sense+cartell'"
     [alt]="'Cartell de ' + pelicula.titol"
     width="150"
   />
 
+  <!-- Mostra el número d'ordre i el títol rebuts del component pare. -->
   <h3>{{ ordre }}. {{ pelicula.titol }}</h3>
+  <!-- Passa el gènere al component fill especialitzat en etiquetes. -->
   <app-etiqueta-genere [genere]="pelicula.genere" />
+  <!-- Mostra el director de la pel·lícula. -->
   <p>Director: {{ pelicula.director }}</p>
+  <!-- Mostra l'any d'estrena. -->
   <p>Any: {{ pelicula.any }}</p>
+  <!-- Mostra la durada en minuts. -->
   <p>Durada: {{ pelicula.durada }} min</p>
+  <!-- Secció que mostra la valoració amb un color segons el seu valor. -->
   <p>
     Valoració:
+    <!-- Posa verd per a valoracions de 8 o més i taronja per les inferiors. -->
     <span [style.color]="pelicula.valoracio >= 8 ? 'green' : 'orange'">
       {{ pelicula.valoracio }}
     </span>
   </p>
 
+  <!-- Si disponible és cert, mostra l'estat disponible. -->
   @if (pelicula.disponible) {
     <span class="estat disponible">Disponible</span>
+  <!-- En cas contrari, mostra que la pel·lícula està llogada. -->
   } @else {
     <span class="estat llogada-text">Llogada</span>
   }
 
+  <!-- Contenidor dels botons d'acció. -->
   <div class="botons">
+    <!-- Al fer clic emet llogar i es deshabilita si la pel·lícula no està disponible. -->
     <button (click)="onLlogar()" [disabled]="!pelicula.disponible">Llogar</button>
 
+    <!-- El boto Retornar només existeix quan la pel·lícula està llogada. -->
     @if (!pelicula.disponible) {
       <button (click)="onRetornar()">Retornar</button>
     }

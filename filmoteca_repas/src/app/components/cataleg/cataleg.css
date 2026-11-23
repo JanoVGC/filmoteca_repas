@@ -1,17 +1,28 @@
+/* Ressalta i separa visualment la línia de resum del catàleg. */
 .resum { font-weight: bold; padding: 1rem; background: #eee; }
+/* Defineix l'espaiat i l'amplada del camp de cerca. */
 .cercador { margin: 1rem 0; padding: 0.5rem; width: 280px; }
+/* Organitza les fitxes en fila i permet que passin a la línia següent. */
 .fitxes { display: flex; flex-wrap: wrap; gap: 1rem; }
+/* Defineix la mida i la presentació base de cada fitxa. */
 .fitxa { border: 1px solid #ccc; padding: 1rem; width: 220px; border-radius: 8px; }
+/* Fa que el cartell ocupi una línia pròpia i afegeix separació inferior. */
 .fitxa img { display: block; margin-bottom: 0.5rem; }
+/* Ressalta el text que indica l'estat de la pel·lícula. */
 .estat { font-weight: bold; }
+/* Pinta en verd l'estat disponible. */
 .disponible { color: green; }
+/* Pinta en vermell l'estat llogada. */
 .llogada-text { color: crimson; }
 
 /* [class.destacada] → valoració >= 8.5 */
 .destacada { border: 2px solid gold; background: #fffbe6; }
 
 /* [class.llogada] → pel·lícules no disponibles */
+/* Atenua visualment les pel·lícules llogades. */
 .llogada { opacity: 0.6; background: #f3f3f3; }
 
+/* Col·loca els botons d'acció amb separació. */
 .botons { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+/* Dona estil italià al missatge que apareix quan no hi ha resultats. */
 .buit { font-style: italic; }

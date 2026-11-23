@@ -1,8 +1,16 @@
+/* Defineix la mida i el marc base de la fitxa. */
 .fitxa { border: 1px solid #ccc; padding: 1rem; width: 220px; border-radius: 8px; }
+/* Col·loca el cartell com un bloc i li afegeix espai inferior. */
 .fitxa img { display: block; margin-bottom: 0.5rem; }
+/* Aplica negreta a les etiquetes d'estat. */
 .estat { font-weight: bold; }
+/* Pinta en verd l'estat disponible. */
 .disponible { color: green; }
+/* Pinta en vermell l'estat llogada. */
 .llogada-text { color: crimson; }
+/* Destaquen les pel·lícules amb una valoració igual o superior a 8.5. */
 .destacada { border: 2px solid gold; background: #fffbe6; }
+/* Atenua les fitxes de pel·lícules llogades. */
 .llogada { opacity: 0.6; background: #f3f3f3; }
+/* Manté els botons alineats i separats dins de la fitxa. */
 .botons { display: flex; gap: 0.5rem; margin-top: 0.5rem; }

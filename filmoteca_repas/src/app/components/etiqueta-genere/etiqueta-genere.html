@@ -1,10 +1,12 @@
-<span
-  class="etiqueta"
-  [class.crimen]="genere === 'Crimen'"
+<!--
+  Les classes dinàmiques assignen un color visual segons el nom del gènere.
+  El text mostra el valor rebut mitjançant @Input().
+-->
+<span class="etiqueta" [class.crimen]="genere === 'Crimen'"
   [class.drama]="genere === 'Drama'"
   [class.comedia]="genere === 'Comèdia' || genere === 'Comedia'"
   [class.terror]="genere === 'Terror'"
-  [class.thriller]="genere === 'Thriller'"
->
+  [class.thriller]="genere === 'Thriller'">
+  <!-- Mostra el text del gènere rebut per @Input(). -->
   {{ genere }}
 </span>

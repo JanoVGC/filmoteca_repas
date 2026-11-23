@@ -1,3 +1,4 @@
+// Importa les utilitats HTTP i Angular necessàries per executar el servidor Express.
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
